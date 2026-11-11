@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Timeline from '../components/Timeline.astro';
+import Design from '../components/Design.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base title="joaosviegas" description="Computer Science and Engineering student at Instituto Superior Técnico. Building applications, automations and integrations, and designing websites and logos.">
+  <a class="skip" href="#main">Skip to content</a>
+  <Nav />
+  <main id="main">
+    <Hero />
+    <Timeline />
+    <Design />
+  </main>
+  <Footer />
+</Base>

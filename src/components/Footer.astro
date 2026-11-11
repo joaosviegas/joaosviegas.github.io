@@ -1,0 +1,56 @@
+---
+const links = [
+  ['GitHub', 'https://github.com/joaosviegas'],
+  ['LinkedIn', 'https://linkedin.com/in/joao-sergio-viegas'],
+  ['CV', '/cv.pdf'],
+];
+---
+<footer class="footer" id="contact">
+  <div class="footer__top">
+    <p class="footer__line">Open to new projects and collaborations.</p>
+    <div class="footer__contact">
+      <a class="mono footer__email" href="mailto:joao.viegas@rnl.tecnico.ulisboa.pt">joao.viegas@rnl.tecnico.ulisboa.pt</a>
+      <ul class="footer__links">
+        {links.map(([label, href]) => (
+          <li><a href={href} {...(!href.startsWith('mailto:') ? { target: '_blank', rel: 'noopener' } : {})}>{label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <svg class="footer__mark" viewBox="-3 -719 5413 882" role="img" aria-label="joaosviegas" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <linearGradient id="mark-fade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="var(--footer-text)" />
+        <stop offset="1" stop-color="var(--footer-text)" stop-opacity="0.3" />
+      </linearGradient>
+    </defs>
+    <path fill="url(#mark-fade)" d="M-3 150L-3 51L50 51Q79 51 94 38.5Q109 26 109 -8L109 -534L237 -534L237 -4Q237 78 200 114Q163 150 73 150ZM107 -605L107 -719L240 -719L240 -605ZM570 12Q491 12 431.5 -22.5Q372 -57 339.5 -120Q307 -183 307 -267Q307 -352 339.5 -414.5Q372 -477 431.5 -511.5Q491 -546 570 -546Q649 -546 708 -511.5Q767 -477 799.5 -414.5Q832 -352 832 -267Q832 -183 799.5 -120Q767 -57 708 -22.5Q649 12 570 12ZM570 -92Q632 -92 665.5 -138Q699 -184 699 -267Q699 -349 665.5 -395.5Q632 -442 570 -442Q508 -442 474 -395.5Q440 -349 440 -267Q440 -184 474 -138Q508 -92 570 -92ZM1064 12Q980 12 929 -26.5Q878 -65 878 -134Q878 -203 921 -242Q964 -281 1052 -298L1229 -333Q1229 -390 1203 -418.5Q1177 -447 1126 -447Q1080 -447 1053.5 -425.5Q1027 -404 1017 -364L887 -370Q903 -455 965 -500.5Q1027 -546 1126 -546Q1240 -546 1298.5 -488.5Q1357 -431 1357 -324L1357 -130Q1357 -109 1364.5 -101Q1372 -93 1387 -93L1404 -93L1404 0Q1398 2 1384.5 3Q1371 4 1357 4Q1324 4 1298 -6.5Q1272 -17 1258 -43.5Q1244 -70 1244 -116L1255 -108Q1247 -73 1220.5 -45.5Q1194 -18 1154 -3Q1114 12 1064 12ZM1090 -81Q1133 -81 1164 -98Q1195 -115 1212 -145Q1229 -175 1229 -216L1229 -246L1091 -218Q1048 -209 1029.5 -191.5Q1011 -174 1011 -146Q1011 -115 1031.5 -98Q1052 -81 1090 -81ZM1683 12Q1604 12 1544.5 -22.5Q1485 -57 1452.5 -120Q1420 -183 1420 -267Q1420 -352 1452.5 -414.5Q1485 -477 1544.5 -511.5Q1604 -546 1683 -546Q1762 -546 1821 -511.5Q1880 -477 1912.5 -414.5Q1945 -352 1945 -267Q1945 -183 1912.5 -120Q1880 -57 1821 -22.5Q1762 12 1683 12ZM1683 -92Q1745 -92 1778.5 -138Q1812 -184 1812 -267Q1812 -349 1778.5 -395.5Q1745 -442 1683 -442Q1621 -442 1587 -395.5Q1553 -349 1553 -267Q1553 -184 1587 -138Q1621 -92 1683 -92ZM2231 12Q2150 12 2096.5 -11Q2043 -34 2015 -75Q1987 -116 1983 -168L2114 -174Q2121 -132 2148 -109Q2175 -86 2232 -86Q2277 -86 2300.5 -100.5Q2324 -115 2324 -146Q2324 -164 2315.5 -176Q2307 -188 2282.5 -197Q2258 -206 2211 -215Q2130 -229 2084 -249.5Q2038 -270 2019.5 -301Q2001 -332 2001 -378Q2001 -453 2058.5 -499.5Q2116 -546 2227 -546Q2304 -546 2353.5 -521.5Q2403 -497 2428.5 -456.5Q2454 -416 2458 -366L2328 -360Q2327 -385 2316 -405Q2305 -425 2283 -436.5Q2261 -448 2225 -448Q2180 -448 2156.5 -430Q2133 -412 2133 -382Q2133 -361 2142.5 -347Q2152 -333 2175 -324.5Q2198 -316 2238 -309Q2320 -297 2368 -276Q2416 -255 2436.5 -223.5Q2457 -192 2457 -148Q2457 -71 2395.5 -29.5Q2334 12 2231 12ZM2655 0L2460 -534L2595 -534L2731 -129L2867 -534L3002 -534L2807 0ZM3053 0L3053 -534L3181 -534L3181 0ZM3051 -605L3051 -719L3184 -719L3184 -605ZM3513 12Q3433 12 3374 -22.5Q3315 -57 3283 -120Q3251 -183 3251 -267Q3251 -351 3283 -413.5Q3315 -476 3373.5 -511Q3432 -546 3510 -546Q3586 -546 3643.5 -512Q3701 -478 3732 -414Q3763 -350 3763 -260L3763 -231L3384 -231Q3388 -161 3422.5 -125.5Q3457 -90 3514 -90Q3557 -90 3585.5 -109.5Q3614 -129 3625 -164L3756 -156Q3734 -78 3669.5 -33Q3605 12 3513 12ZM3384 -317L3631 -317Q3627 -382 3594 -413.5Q3561 -445 3510 -445Q3459 -445 3425.5 -412Q3392 -379 3384 -317ZM4061 162Q3991 162 3941 143Q3891 124 3860.5 89.5Q3830 55 3818 10L3950 1Q3960 31 3984.5 48Q4009 65 4061 65Q4120 65 4152 38.5Q4184 12 4184 -44L4184 -112Q4165 -73 4123 -49.5Q4081 -26 4029 -26Q3963 -26 3911.5 -58.5Q3860 -91 3831 -149.5Q3802 -208 3802 -285Q3802 -362 3830.5 -420.5Q3859 -479 3910 -512.5Q3961 -546 4027 -546Q4085 -546 4127 -520Q4169 -494 4188 -451L4188 -534L4313 -534L4313 -47Q4313 21 4281.5 68Q4250 115 4193.5 138.5Q4137 162 4061 162ZM4059 -126Q4116 -126 4150 -168.5Q4184 -211 4185 -286Q4186 -336 4170.5 -371.5Q4155 -407 4126.5 -426.5Q4098 -446 4059 -446Q4000 -446 3967.5 -402.5Q3935 -359 3935 -286Q3935 -213 3968.5 -169.5Q4002 -126 4059 -126ZM4578 12Q4494 12 4443 -26.5Q4392 -65 4392 -134Q4392 -203 4435 -242Q4478 -281 4566 -298L4743 -333Q4743 -390 4717 -418.5Q4691 -447 4640 -447Q4594 -447 4567.5 -425.5Q4541 -404 4531 -364L4401 -370Q4417 -455 4479 -500.5Q4541 -546 4640 -546Q4754 -546 4812.5 -488.5Q4871 -431 4871 -324L4871 -130Q4871 -109 4878.5 -101Q4886 -93 4901 -93L4918 -93L4918 0Q4912 2 4898.5 3Q4885 4 4871 4Q4838 4 4812 -6.5Q4786 -17 4772 -43.5Q4758 -70 4758 -116L4769 -108Q4761 -73 4734.5 -45.5Q4708 -18 4668 -3Q4628 12 4578 12ZM4604 -81Q4647 -81 4678 -98Q4709 -115 4726 -145Q4743 -175 4743 -216L4743 -246L4605 -218Q4562 -209 4543.5 -191.5Q4525 -174 4525 -146Q4525 -115 4545.5 -98Q4566 -81 4604 -81ZM5182 12Q5101 12 5047.5 -11Q4994 -34 4966 -75Q4938 -116 4934 -168L5065 -174Q5072 -132 5099 -109Q5126 -86 5183 -86Q5228 -86 5251.5 -100.5Q5275 -115 5275 -146Q5275 -164 5266.5 -176Q5258 -188 5233.5 -197Q5209 -206 5162 -215Q5081 -229 5035 -249.5Q4989 -270 4970.5 -301Q4952 -332 4952 -378Q4952 -453 5009.5 -499.5Q5067 -546 5178 -546Q5255 -546 5304.5 -521.5Q5354 -497 5379.5 -456.5Q5405 -416 5409 -366L5279 -360Q5278 -385 5267 -405Q5256 -425 5234 -436.5Q5212 -448 5176 -448Q5131 -448 5107.5 -430Q5084 -412 5084 -382Q5084 -361 5093.5 -347Q5103 -333 5126 -324.5Q5149 -316 5189 -309Q5271 -297 5319 -276Q5367 -255 5387.5 -223.5Q5408 -192 5408 -148Q5408 -71 5346.5 -29.5Q5285 12 5182 12Z" />
+  </svg>
+
+  <p class="mono footer__copy">© 2026 joaosviegas</p>
+</footer>
+
+<style>
+  .footer {
+    margin: var(--gutter); padding: clamp(40px, 6vw, 96px) clamp(24px, 5vw, 72px) var(--s4);
+    background: var(--footer-bg); color: var(--footer-text); border-radius: var(--radius-section);
+    scroll-margin-top: var(--s2);
+  }
+  .footer__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--s5); }
+  .footer__line { max-width: 16ch; margin: 0; font-size: var(--fs-h2); font-weight: var(--fw-medium); letter-spacing: var(--track-tight); line-height: 1.05; text-wrap: balance; }
+  .footer__contact { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s3); }
+  .footer__email { display: inline-flex; align-items: center; min-height: 44px; color: var(--footer-text); text-underline-offset: 5px; transition: color var(--dur) var(--ease); }
+  .footer__links { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s4); margin: 0; padding: 0; list-style: none; }
+  .footer__links a {
+    display: inline-flex; align-items: center; min-height: 44px; color: var(--footer-text); font-weight: var(--fw-medium);
+    text-decoration: underline; text-underline-offset: 6px; text-decoration-color: rgb(245 245 243 / 0.25);
+    transition: color var(--dur) var(--ease), text-decoration-color var(--dur) var(--ease);
+  }
+  .footer__links a:hover, .footer__email:hover { color: var(--footer-muted); text-decoration-color: currentColor; }
+  .footer__mark { display: block; width: 100%; height: auto; margin: clamp(56px, 9vw, 140px) 0 var(--s4); overflow: visible; }
+  .footer__copy { margin: 0; color: var(--footer-muted); }
+  .footer .mono { color: var(--footer-muted); }
+  .footer .footer__email { color: var(--footer-text); }
+  @media (max-width: 640px) { .footer__top { align-items: flex-start; } }
+</style>

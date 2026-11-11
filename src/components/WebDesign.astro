@@ -1,0 +1,65 @@
+---
+const sites = [
+  {
+    title: 'Run Her Way',
+    role: 'Discrete Design',
+    href: 'https://www.runherway.org/ambassadors',
+    summary: "Ambassadors page and ongoing improvements for a nonprofit championing women's sports.",
+    details: 'Designed and built the ambassadors page and delivered several enhancements across the site, with video guides so the team can manage it themselves.',
+    img: '/runherway/card.jpg',
+    alt: 'Run Her Way ambassadors page: a header photo of runners on a road above the heading Our Ambassadors.',
+  },
+  {
+    title: 'Baker New York',
+    role: 'Discrete Design',
+    href: 'https://www.bakernewyork.com/',
+    summary: 'Multiple pages designed and developed, and an update to the latest Squarespace version.',
+    details: 'Restructured the landing page and the Brands & Investors page, showcasing every client story and linking through to each one.',
+    img: '/baker/card.jpg',
+    alt: 'Baker New York homepage: a black-and-white photo of a necklace on a display bust under the heading The Art of Where, above an introduction to the team.',
+  },
+];
+---
+<div class="web" id="design-web">
+  <h3>Web Design</h3>
+  <ul class="web__grid">
+    {sites.map((s) => (
+      <li class="card">
+        <img src={s.img} width="1280" height="720" alt={s.alt} loading="lazy" />
+        <div class="card__body">
+          <div class="card__head">
+            <h4>{s.title}</h4>
+            <p class="mono">{s.role}</p>
+          </div>
+          <p class="card__summary">{s.summary}</p>
+          {s.details && <p class="card__details">{s.details}</p>}
+          <a class="card__link" href={s.href} target="_blank" rel="noopener">
+            Visit {s.title}
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+          </a>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .web { margin-top: var(--s8); padding-top: var(--s5); border-top: 1px solid var(--border); scroll-margin-top: var(--s8); }
+  h3 { font-size: var(--fs-row); margin-bottom: var(--s5); }
+  h4 { font-size: 1.25rem; font-weight: var(--fw-medium); letter-spacing: -0.02em; }
+  .web__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s6) var(--s4); margin: 0; padding: 0; list-style: none; }
+  .card { display: flex; flex-direction: column; gap: var(--s3); }
+  .card img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-radius: var(--radius-inner); }
+  .card__body { display: flex; flex: 1; flex-direction: column; gap: var(--s1); }
+  .card__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--s1); }
+  .card__head p { margin: 0; }
+  .card__summary { margin: 0; }
+  .card__details { margin: 0; color: var(--muted); font-size: 0.9375rem; }
+  .card__link {
+    display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: auto; min-height: 44px;
+    font-weight: var(--fw-medium); text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--border);
+    transition: color var(--dur) var(--ease), text-decoration-color var(--dur) var(--ease);
+  }
+  .card__link:hover { color: var(--muted); text-decoration-color: currentColor; }
+  @media (max-width: 760px) { .web__grid { grid-template-columns: minmax(0, 1fr); } }
+</style>

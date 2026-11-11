@@ -1,0 +1,74 @@
+---
+const links = [
+  ['GitHub', 'https://github.com/joaosviegas'],
+  ['LinkedIn', 'https://linkedin.com/in/joao-sergio-viegas'],
+  ['CV', '/cv.pdf'],
+  ['Email', 'mailto:joao.viegas@rnl.tecnico.ulisboa.pt'],
+];
+---
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero__texture" aria-hidden="true"></div>
+  <h1 id="hero-title">Hi, I'm João Sérgio.</h1>
+  <div class="hero__body">
+    <div class="hero__intro">
+      <p>I’m pursuing a Master’s in Computer Science and Engineering at Instituto Superior Técnico, Lisbon, where I hold a research grant at DEI building the Department’s internal applications.</p>
+      <p>I’m particularly interested in application development, process automation and DevOps, and I also design websites and logos.</p>
+    </div>
+    <ul class="hero__links">
+      {links.map(([label, href]) => (
+        <li><a href={href} {...(!href.startsWith('mailto:') ? { target: '_blank', rel: 'noopener' } : {})}>{label}</a></li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative; overflow: hidden; isolation: isolate;
+    margin: 0 var(--gutter) var(--gutter); min-height: calc(100svh - var(--nav-h) - var(--gutter));
+    padding: clamp(64px, 8vw, 96px) clamp(24px, 5vw, 72px) clamp(32px, 5vw, 72px);
+    display: flex; flex-direction: column; justify-content: flex-end; gap: var(--s6);
+    background: radial-gradient(120% 100% at 100% 0%, color-mix(in srgb, var(--text) 7%, var(--surface)), var(--surface) 62%);
+    border-radius: var(--radius-section);
+  }
+  /* two dot layers on one grid: a quiet neutral field, and a small brighter cluster in the corner */
+  .hero__texture { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+  .hero__texture::before, .hero__texture::after {
+    content: ''; position: absolute; inset: 0 0 auto auto;
+    background-size: 14px 14px;
+  }
+  .hero__texture::before {
+    width: 68%; height: 74%; opacity: 0.24;
+    background-image: radial-gradient(circle, var(--text) 1px, transparent 1.5px);
+    mask-image: radial-gradient(ellipse at top right, #000 8%, transparent 70%);
+  }
+  .hero__texture::after {
+    width: 30%; height: 38%; opacity: 0.75;
+    background-image: radial-gradient(circle, var(--accent) 1.2px, transparent 1.7px);
+    mask-image: radial-gradient(ellipse at top right, #000 0%, transparent 68%);
+  }
+  h1 { font-size: var(--fs-hero); font-weight: var(--fw-semibold); max-width: 12ch; animation: rise var(--dur-reveal) var(--ease) both; }
+  .hero__body { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--s5); animation: rise var(--dur-reveal) var(--ease) both; }
+  .hero__intro { max-width: 52ch; }
+  .hero__intro p { margin: 0 0 var(--s2); }
+  .hero__intro p:first-child { color: var(--text); }
+  .hero__intro p:last-child { margin: 0; color: var(--muted); }
+  .hero__links { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s4); margin: 0; padding: 0; list-style: none; }
+  .hero__links a {
+    display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 6px;
+    text-decoration-color: var(--border); font-size: 1rem; font-weight: var(--fw-medium);
+    transition: color var(--dur) var(--ease), text-decoration-color var(--dur) var(--ease);
+  }
+  .hero__links a:hover { color: var(--muted); text-decoration-color: currentColor; }
+  .hero__links li:last-child a {
+    padding: 0 var(--s4); border-radius: var(--radius-pill); background: var(--text); color: var(--bg); text-decoration: none;
+    transition: background var(--dur) var(--ease);
+  }
+  .hero__links li:last-child a:hover { background: color-mix(in srgb, var(--text) 78%, var(--bg)); color: var(--bg); }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+  @media (max-width: 640px) {
+    .hero { padding-inline: var(--s3); }
+    .hero__body { display: block; }
+    .hero__links { margin-top: var(--s4); }
+  }
+</style>

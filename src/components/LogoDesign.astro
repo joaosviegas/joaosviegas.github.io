@@ -1,0 +1,251 @@
+---
+const p = (s: string) => encodeURI(s);
+
+const projects = [
+  {
+    id: 'funchal',
+    title: 'Funchal Municipal Assembly',
+    dates: '2024',
+    status: 'Winner · 1st of 31',
+    winner: true,
+    summary: 'The winning entry in the contest for the new logo of the Funchal Municipal Assembly.',
+    details: [
+      'Developed alongside my studies during the semester break, the identity gives the Assembly a more modern presence while keeping the credibility of a public institution.',
+      'Presented at the Funchal City Council on 6 August 2024.',
+    ],
+    article: { label: 'Read about it here', href: 'https://www.dnoticias.pt/2024/8/6/415413-joao-viegas-vence-concurso-do-novo-logotipo-para-a-assembleia-municipal-do-funchal/' },
+    pdf: { label: 'Memória Descritiva e Justificativa', href: p('/funchal/Memória_Descritiva_CMF.pdf') },
+    slides: [
+      { src: '/funchal/logo-horizontal.jpg', w: 1600, h: 523, caption: 'Horizontal logotype', alt: 'Funchal Municipal Assembly logo, horizontal version: three nested magenta arches beside the name Assembleia Municipal do Funchal.' },
+      { src: '/funchal/logo-vertical.jpg', w: 1600, h: 898, caption: 'Vertical logotype', alt: 'Funchal Municipal Assembly logo, vertical version: three nested magenta arches above the name Assembleia Municipal do Funchal.' },
+      { src: '/funchal/certificate.jpg', w: 1298, h: 920, caption: 'Winner certificate', alt: 'Certificate stating João Sérgio Abreu Viegas won the ideas contest for the new Funchal Municipal Assembly logo, dated Funchal, 6 August 2024.' },
+      { src: '/funchal/ceremony.jpg', w: 1280, h: 853, caption: 'Award ceremony', alt: 'João holding the contest certificate in the Funchal Municipal Assembly chamber, standing with four officials and one other participant.' },
+      { src: '/funchal/presenting.jpg', w: 1280, h: 853, caption: 'Presenting the proposal', alt: 'João presenting at a wooden lectern bearing the Funchal coat of arms, with audience members blurred in the foreground.' },
+      { src: '/funchal/memoria-1.jpg', w: 990, h: 1400, caption: 'Descriptive report, 1 of 2', alt: 'Cover page of the Memória Descritiva e Justificativa for the Funchal Municipal Assembly logo contest, January 2024.' },
+      { src: '/funchal/memoria-2.jpg', w: 990, h: 1400, caption: 'Descriptive report, 2 of 2', alt: 'Second page of the descriptive and justification report for the Funchal Municipal Assembly logo.' },
+    ],
+  },
+  {
+    id: 'machico',
+    title: 'Visit Machico',
+    dates: '2025',
+    status: 'Proposal',
+    winner: false,
+    summary: 'A logotype proposal for the Visit Machico brand.',
+    details: [
+      "Designed to sit within the Visit Madeira regional identity, it draws on Machico's sand beach and the colours of the town's coat of arms for a clean and fluid mark.",
+    ],
+    pdf: { label: 'Memória Descritiva e Justificativa', href: p('/machico/Memória_Descritiva_Visit_Machico.pdf') },
+    slides: [
+      { src: '/machico/logo.jpg', w: 495, h: 277, caption: 'Logotype', alt: 'Visit Machico logotype: four overlapping curved bands in yellow, green, blue and grey above the words Visit Machico.' },
+      { src: '/machico/memoria-1.jpg', w: 990, h: 1400, caption: 'Descriptive report, 1 of 2', alt: 'Cover page of the Memória Descritiva e Justificativa for the Visit Machico logo contest, March 2025.' },
+      { src: '/machico/memoria-2.jpg', w: 990, h: 1400, caption: 'Descriptive report, 2 of 2', alt: 'Second page of the descriptive and justification report for the Visit Machico logo.' },
+    ],
+  },
+];
+---
+<div class="logos">
+  <h3>Logo Design</h3>
+
+  {projects.map((pr) => (
+    <article class="project" data-project>
+      <header class="project__head">
+        <div>
+          <h4>{pr.title}</h4>
+          <p class="project__summary">{pr.summary}</p>
+          {pr.article && <a class="article" href={pr.article.href} target="_blank" rel="noopener">{pr.article.label}</a>}
+        </div>
+        <p class="mono project__meta">
+          <span>{pr.dates}</span>
+          <span class:list={['tag', { 'tag--win': pr.winner }]}>{pr.status}</span>
+        </p>
+      </header>
+
+      <div class="carousel" role="region" aria-roledescription="carousel" aria-label={`${pr.title} images`} data-carousel="page">
+        <div class="viewport">
+          <ul class="track">
+            {pr.slides.map((s, i) => (
+              <li class="slide" aria-label={`${i + 1} of ${pr.slides.length}`}>
+                <button type="button" class="slide__open" data-open={i} aria-label={`Open ${s.caption} in full view`}>
+                  <img src={s.src} width={s.w} height={s.h} alt={s.alt} loading="lazy" draggable="false" />
+                </button>
+                <p class="mono caption">{s.caption}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="controls">
+          <span class="mono counter" aria-live="polite" data-counter></span>
+          <div class="arrows">
+            <button type="button" class="arrow" data-prev aria-label="Previous image">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+            </button>
+            <button type="button" class="arrow" data-next aria-label="Next image">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <dialog class="dialog" aria-labelledby={`${pr.id}-title`} data-dialog>
+        <div class="dialog__top">
+          <p class="mono project__meta">
+            <span>{pr.dates}</span>
+            <span class:list={['tag', { 'tag--win': pr.winner }]}>{pr.status}</span>
+          </p>
+          <button type="button" class="dialog__close" data-close aria-label="Close">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </div>
+        <div class="dialog__body">
+          <div class="carousel carousel--modal" role="region" aria-roledescription="carousel" aria-label={`${pr.title} images, full view`} data-carousel="modal">
+            <div class="viewport">
+              <ul class="track">
+                {pr.slides.map((s, i) => (
+                  <li class="mslide" aria-label={`${i + 1} of ${pr.slides.length}`}>
+                    <img src={s.src} width={s.w} height={s.h} alt={s.alt} loading="lazy" draggable="false" />
+                    <p class="mono caption">{s.caption}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="controls">
+              <span class="mono counter" aria-live="polite" data-counter></span>
+              <div class="arrows">
+                <button type="button" class="arrow" data-prev aria-label="Previous image">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+                </button>
+                <button type="button" class="arrow" data-next aria-label="Next image">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="dialog__text">
+            <h4 id={`${pr.id}-title`}>{pr.title}</h4>
+            <p class="dialog__summary">{pr.summary}</p>
+            {pr.details.map((d) => <p>{d}</p>)}
+            {pr.article && <p><a class="article" href={pr.article.href} target="_blank" rel="noopener">{pr.article.label}</a></p>}
+            <a class="pdf mono" href={pr.pdf.href} target="_blank" rel="noopener">{pr.pdf.label} (PDF)</a>
+          </div>
+        </div>
+      </dialog>
+    </article>
+  ))}
+</div>
+
+<script>
+  import EmblaCarousel, { type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pad = (n: number) => String(n).padStart(2, '0');
+
+  function init(root: HTMLElement, opts: EmblaOptionsType, keys: HTMLElement = root): EmblaCarouselType {
+    const embla = EmblaCarousel(root.querySelector<HTMLElement>('.viewport')!, { duration: reduce ? 1 : 25, ...opts });
+    const prev = root.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = root.querySelector<HTMLButtonElement>('[data-next]')!;
+    const counter = root.querySelector<HTMLElement>('[data-counter]')!;
+    const update = () => {
+      prev.disabled = !embla.canScrollPrev();
+      next.disabled = !embla.canScrollNext();
+      counter.textContent = `${pad(embla.selectedScrollSnap() + 1)} / ${pad(embla.scrollSnapList().length)}`;
+    };
+    embla.on('init', update).on('reInit', update).on('select', update);
+    update();
+    prev.addEventListener('click', () => embla.scrollPrev());
+    next.addEventListener('click', () => embla.scrollNext());
+    keys.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { embla.scrollPrev(); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { embla.scrollNext(); e.preventDefault(); }
+    });
+    return embla;
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-project]').forEach((project) => {
+    const page = init(project.querySelector<HTMLElement>('[data-carousel="page"]')!, { align: 'start', containScroll: false });
+    const dialog = project.querySelector<HTMLDialogElement>('[data-dialog]')!;
+    let modal: EmblaCarouselType | undefined;
+
+    project.querySelectorAll<HTMLButtonElement>('[data-open]').forEach((btn) =>
+      btn.addEventListener('click', () => {
+        dialog.showModal();
+        // embla needs a laid-out viewport, so the modal carousel starts on first open
+        modal ??= init(dialog.querySelector<HTMLElement>('[data-carousel="modal"]')!, {}, dialog);
+        modal.reInit();
+        modal.scrollTo(Number(btn.dataset.open), true);
+      }),
+    );
+
+    dialog.querySelector('[data-close]')!.addEventListener('click', () => dialog.close());
+    // a click on the backdrop lands on the dialog element itself
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', () => page.reInit());
+  });
+</script>
+
+<style>
+  .logos h3 { font-size: var(--fs-row); margin-bottom: var(--s4); }
+  .project { padding: var(--s5) 0 var(--s6); border-top: 1px solid var(--border); }
+  .project__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: var(--s3); margin-bottom: var(--s5); }
+  h4 { font-size: var(--fs-row); font-weight: var(--fw-medium); letter-spacing: -0.02em; }
+  .project__summary { max-width: 46ch; margin: var(--s1) 0 0; color: var(--muted); }
+  .project__meta { display: flex; align-items: center; gap: var(--s2); margin: 0; }
+
+  .tag { padding: 4px 12px; border: 1px solid var(--border); border-radius: var(--radius-pill); text-transform: uppercase; font-size: 0.75rem; }
+  .tag--win { color: var(--accent-ink); border-color: var(--accent); }
+
+  .viewport { overflow: hidden; cursor: grab; }
+  .viewport:active { cursor: grabbing; }
+  .track { display: flex; gap: var(--s2); margin: 0; padding: 0; list-style: none; touch-action: pan-y pinch-zoom; }
+  .slide { flex: 0 0 auto; min-width: 0; }
+  .slide__open { display: block; padding: 0; border: 0; background: none; cursor: pointer; border-radius: var(--radius-inner); overflow: hidden; }
+  .slide img { height: clamp(200px, 28vw, 380px); width: auto; max-width: min(calc(100vw - 96px), 760px); object-fit: contain; background: #fff; border-radius: var(--radius-inner); transition: opacity var(--dur) var(--ease); }
+  .slide__open:hover img { opacity: 0.88; }
+  .caption { margin: var(--s1) 0 0; }
+
+  .controls { display: flex; align-items: center; justify-content: space-between; margin-top: var(--s3); }
+  .counter { margin: 0; }
+  .arrows { display: flex; gap: var(--s1); }
+  .arrow {
+    display: grid; place-items: center; width: 44px; height: 44px; padding: 0; cursor: pointer;
+    background: none; color: var(--text); border: 1px solid var(--border); border-radius: var(--radius-pill);
+    transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .arrow:hover:not(:disabled) { border-color: var(--accent); color: var(--accent-ink); }
+  .arrow:disabled { opacity: 0.35; cursor: default; }
+
+  /* dialog */
+  .dialog {
+    width: min(1200px, calc(100vw - 2 * var(--gutter))); max-height: calc(100dvh - 2 * var(--gutter));
+    margin: auto; padding: var(--s3); overflow: auto;
+    background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius-section);
+  }
+  .dialog::backdrop { background: rgb(0 0 0 / 0.72); }
+  .dialog__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--s3); }
+  .dialog__close {
+    display: grid; place-items: center; width: 44px; height: 44px; padding: 0; cursor: pointer;
+    background: none; color: var(--text); border: 1px solid var(--border); border-radius: var(--radius-pill);
+  }
+  .dialog__close:hover { border-color: var(--accent); color: var(--accent-ink); }
+  .dialog__body { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--s5); align-items: start; }
+  .carousel--modal:focus-visible { outline-offset: 6px; border-radius: var(--radius-inner); }
+  .carousel--modal .track { gap: 0; }
+  .mslide { flex: 0 0 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s1); }
+  .mslide img { width: auto; height: auto; max-width: 100%; max-height: min(60dvh, 620px); background: #fff; border-radius: var(--radius-inner); }
+  .mslide .caption { margin: 0; align-self: flex-start; }
+  .dialog__text h4 { margin-bottom: var(--s2); }
+  .dialog__text p { margin: 0 0 var(--s2); color: var(--muted); }
+  .dialog__text .dialog__summary { color: var(--text); }
+  .article { display: inline-flex; align-items: center; min-height: 44px; margin-top: 0; color: var(--text); text-underline-offset: 4px; }
+  .article:hover { color: var(--muted); }
+  .dialog__text .article { margin: 0; }
+  .pdf { display: inline-block; margin-top: var(--s2); color: var(--text); text-underline-offset: 4px; }
+  .pdf:hover { color: var(--muted); }
+  :global(body:has(dialog[open])) { overflow: hidden; }
+
+  @media (max-width: 860px) {
+    .dialog { padding: var(--s2); }
+    .dialog__body { grid-template-columns: minmax(0, 1fr); gap: var(--s3); }
+    .mslide img { max-height: min(46dvh, 460px); }
+  }
+</style>

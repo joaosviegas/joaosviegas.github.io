@@ -1,0 +1,20 @@
+---
+import LogoDesign from './LogoDesign.astro';
+import WebDesign from './WebDesign.astro';
+---
+<section class="design" id="design" aria-labelledby="design-title">
+  <h2 id="design-title">Design</h2>
+  <p class="design__intro">Alongside development, I design visual identities and websites.</p>
+  <LogoDesign />
+  <WebDesign />
+</section>
+
+<style>
+  .design {
+    margin: var(--section-gap) var(--gutter) var(--gutter);
+    padding: clamp(48px, 8vw, 120px) clamp(24px, 5vw, 72px);
+    background: var(--surface); border-radius: var(--radius-section);
+  }
+  h2 { font-size: var(--fs-h2); }
+  .design__intro { max-width: 40ch; margin: var(--s3) 0 clamp(64px, 9vw, 120px); color: var(--muted); }
+</style>
